@@ -1,0 +1,657 @@
+/* ---------- Base Styles ---------- */
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  background: #f8f6ef;
+  color: #27311d;
+  margin: 0;
+  padding: 0;
+}
+
+/* ---------- Links ---------- */
+a {
+  color: #3a5634;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+a:hover {
+  color: #1d2f15;
+}
+
+/* ---------- Navbar ---------- */
+.navbar {
+  display: flex;
+  align-items: center;
+  background: #f7f3e9;
+  padding: 0.9em 1.6em;
+  border-bottom: 1.5px solid #e2d6b5;
+  gap: 1.3em;
+}
+.navbar-link {
+  color: #27311d;
+  text-decoration: none;
+  font-size: 1.06rem;
+  padding: 0.2em 0.5em;
+  border-radius: 6px;
+  transition: background 0.15s, color 0.15s;
+}
+.navbar-link.active {
+  background: #ede1c7;
+  color: #3a5634;
+  font-weight: bold;
+}
+.navbar-logout {
+  margin-left: 10px;
+  font-size: 0.98rem;
+  padding: 0.31em 1.1em;
+  background: none;
+  border: none;
+  color: #a22b2b;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.14s;
+}
+.navbar-logout:hover {
+  background: #f4d6d6;
+}
+
+/* ---------- Hero Section ---------- */
+.hero {
+  background: linear-gradient(120deg, #c7e7b7 0%, #f8f6ef 100%);
+  padding: 64px 0 38px 0;
+  text-align: center;
+}
+.hero-content {
+  max-width: 540px;
+  margin: 0 auto;
+}
+.hero-title {
+  font-size: 2.35rem;
+  font-weight: bold;
+  color: #355c2c;
+  margin-bottom: 0.45em;
+  letter-spacing: 0.03em;
+}
+.hero-subtitle {
+  font-size: 1.22rem;
+  color: #5e6e41;
+  font-weight: 400;
+  margin-bottom: 0.3em;
+}
+
+/* ---------- Features Cards ---------- */
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.8em;
+  margin: 2.2em 0 1.3em 0;
+  padding: 0 8vw;
+}
+.feature-card {
+  background: #fffdf7;
+  border: 1.5px solid #ece0c2;
+  border-radius: 13px;
+  box-shadow: 0 3px 12px #eae7d5a6;
+  padding: 2em 1.2em 1.3em 1.2em;
+  width: 260px;
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8em;
+  transition: box-shadow 0.18s, border 0.15s;
+}
+.feature-card:hover {
+  box-shadow: 0 5px 18px #d9e6d0b6;
+  border-color: #bbd09d;
+}
+.feature-card svg {
+  width: 38px;
+  height: 38px;
+  stroke: #578b4b;
+  stroke-width: 2.5px;
+  fill: none;
+  margin-bottom: 0.4em;
+}
+.feature-title {
+  font-size: 1.13rem;
+  color: #3a5634;
+  font-weight: 600;
+  margin-bottom: 0.1em;
+}
+.feature-desc {
+  font-size: 1rem;
+  color: #4b5a30;
+  margin-bottom: 0.7em;
+  text-align: center;
+}
+
+/* ---------- Section ---------- */
+.section {
+  padding: 2.1em 0 1.2em 0;
+  background: #f4f2e7;
+}
+.section-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 2.5em;
+  max-width: 1020px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.section-text {
+  flex: 1.5;
+  min-width: 270px;
+}
+.section-title {
+  font-size: 1.3rem;
+  color: #355c2c;
+  font-weight: 600;
+  margin-bottom: 0.3em;
+}
+.section-desc {
+  font-size: 1.06rem;
+  color: #4b5a30;
+  margin-bottom: 0.7rem;
+}
+.section-image {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.section-image img {
+  width: 240px;
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 2px 14px #b6c1a3b4;
+  object-fit: cover;
+}
+
+/* ---------- Footer ---------- */
+footer {
+  text-align: center;
+  background: #f7f3e9;
+  color: #5e6e41;
+  padding: 0.7em 0 1.2em 0;
+  font-size: 1.03rem;
+  border-top: 1.5px solid #e2d6b5;
+  margin-top: 2em;
+}
+
+/* ---------- Forms and Inputs ---------- */
+.event-form {
+  background: #fffdf7;
+  border-radius: 10px;
+  padding: 2em 1.3em;
+  box-shadow: 0 2px 11px #eae7d5a6;
+  max-width: 450px;
+  margin: 1.2em auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2em;
+}
+.event-label {
+  font-size: 1.01rem;
+  color: #3a5634;
+  font-weight: 500;
+  margin-bottom: 0.3em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35em;
+}
+.event-input, .event-textarea {
+  border: 1.4px solid #c8d4bb;
+  border-radius: 6px;
+  padding: 0.62em 0.9em;
+  font-size: 1.02rem;
+  background: #faf9f3;
+  color: #27311d;
+  margin-top: 0.09em;
+  transition: border-color 0.14s;
+}
+.event-input:focus, .event-textarea:focus {
+  outline: none;
+  border-color: #a6c17b;
+}
+.event-textarea {
+  min-height: 70px;
+  resize: vertical;
+}
+.event-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  font-size: 1rem;
+  margin-top: 0.2em;
+}
+.event-checkbox {
+  accent-color: #3a5634;
+  width: 1.2em;
+  height: 1.2em;
+}
+.button-outline {
+  background: #fffdf7;
+  color: #3a5634;
+  border: 1.4px solid #bba77c;
+  border-radius: 7px;
+  padding: 0.45em 1.2em;
+  font-size: 1.04rem;
+  cursor: pointer;
+  font-weight: 500;
+  margin-right: 0.4em;
+  transition: background 0.15s, border 0.15s, color 0.17s;
+}
+.button-outline:hover {
+  background: #e3dfc7;
+  border-color: #a6c17b;
+  color: #355c2c;
+}
+.button-cancel {
+  background: #f7e3e3;
+  color: #a22b2b;
+  border: 1.2px solid #eeb7b7;
+  border-radius: 7px;
+  padding: 0.45em 1.2em;
+  font-size: 1.04rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.14s, border 0.12s, color 0.16s;
+}
+.button-cancel:hover {
+  background: #f1d5d5;
+  color: #831d1d;
+  border-color: #e18c8c;
+}
+.error-message {
+  color: #a22b2b;
+  background: #f8e0e1;
+  padding: 0.6em 1em;
+  border-radius: 6px;
+  margin-bottom: 0.5em;
+  border: 1px solid #eeb7b7;
+  font-size: 0.98rem;
+}
+.success-message {
+  color: #18732e;
+  background: #e1f6e2;
+  padding: 0.6em 1em;
+  border-radius: 6px;
+  margin-bottom: 0.5em;
+  border: 1px solid #8be6a5;
+  font-size: 0.98rem;
+}
+
+/* ---------- Filter Bar ---------- */
+.filter-bar {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 1.2em 0 1.3em 0;
+  align-items: flex-end;
+}
+.filter-bar input {
+  border: 1.1px solid #c8d4bb;
+  border-radius: 6px;
+  font-size: 1.01rem;
+  padding: 0.59em 0.9em;
+  background: #faf9f3;
+  transition: border-color 0.14s;
+}
+.filter-bar input:focus {
+  outline: none;
+  border-color: #a6c17b;
+}
+
+/* ---------- Lists: Events, Parks, Trails ---------- */
+.events-section, .parks-section, .trails-section {
+  max-width: 700px;
+  margin: 0 auto 2em auto;
+  padding: 1.5em 0 1em 0;
+}
+.section-title {
+  font-size: 1.45rem;
+  color: #355c2c;
+  font-weight: 600;
+  margin-bottom: 0.7em;
+}
+.badge-novos {
+  background: #b6e09d;
+  color: #2a4e1b;
+  font-size: 0.98rem;
+  padding: 0.19em 0.72em;
+  border-radius: 1em;
+  font-weight: 600;
+  margin-left: 2px;
+  letter-spacing: 0.01em;
+  border: 1px solid #c8d4bb;
+}
+.no-events {
+  color: #8e9d7a;
+  font-size: 1.05rem;
+  margin: 1.5em 0;
+  text-align: center;
+}
+
+.event-list, .park-list, .trail-list {
+  list-style: none;
+  padding: 0;
+  margin: 1.4em 0 0.2em 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1em;
+}
+.event-list-item, .park-list-item, .trail-list-item {
+  border-radius: 9px;
+  background: #f9f8f3;
+  box-shadow: 0 2px 7px #eae7d5a6;
+  padding: 1.13em 1em 1.2em 1em;
+  border: 1.2px solid #ece0c2;
+  display: flex;
+  flex-direction: column;
+  gap: 0.34em;
+}
+.event-list-title, .park-list-title, .trail-list-title {
+  font-size: 1.11rem;
+  font-weight: 600;
+  color: #3a5634;
+  margin-bottom: 0.1em;
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+}
+.event-list-meta, .park-list-meta, .trail-list-meta {
+  font-size: 0.97rem;
+  color: #5e6e41;
+  margin-bottom: 0.2em;
+}
+.event-list-desc, .park-list-desc, .trail-list-desc {
+  font-size: 0.99rem;
+  color: #4b5a30;
+  margin-bottom: 0.15em;
+}
+.trail-list-tips {
+  font-size: 0.96rem;
+  color: #9b7a16;
+  margin-top: 0.25em;
+}
+
+/* ---------- Map Link ---------- */
+.map-link {
+  margin-left: 8px;
+  color: #3a5634;
+  font-weight: 500;
+  text-decoration: none;
+  border-bottom: 1px dashed #bba77c;
+  transition: color 0.16s, border 0.16s;
+}
+.map-link:hover {
+  color: #1d2f15;
+  border-bottom: 1px solid #27311d;
+}
+
+/* ---------- Responsive Layouts ---------- */
+@media (max-width: 900px) {
+  .features {
+    gap: 1.2em;
+    padding: 0 3vw;
+  }
+  .section-content {
+    flex-direction: column;
+    gap: 1.7em;
+    align-items: stretch;
+  }
+}
+@media (max-width: 650px) {
+  .features {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 1vw;
+  }
+  .section-image img {
+    width: 100%;
+    max-width: 95vw;
+  }
+  .event-form {
+    padding: 1.1em 0.4em;
+  }
+  .events-section, .parks-section, .trails-section {
+    padding: 0.8em 0 0.2em 0;
+  }
+}
+
+/* ---------- Utility: Scrollbar ---------- */
+::-webkit-scrollbar {
+  width: 10px;
+  background: #f4f2e7;
+}
+::-webkit-scrollbar-thumb {
+  background: #d9e6d0;
+  border-radius: 6px;
+}
+
+/* --------- Trilhas (Trails) Section --------- */
+.trails-section {
+  max-width: 900px;
+  margin: 0 auto 2em auto;
+  padding: 1.5em 0 1em 0;
+}
+
+.trail-list {
+  list-style: none;
+  padding: 0;
+  margin: 1.4em 0 0.2em 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2.2em;
+}
+
+.trail-list-item {
+  background: linear-gradient(100deg, #f3fcf1 80%, #e3f5e1 100%);
+  border: 1.7px solid #c8e6c9;
+  border-radius: 13px;
+  box-shadow: 0 4px 18px #d9e6d0b6;
+  padding: 1.7em 1.3em 1.2em 1.3em;
+  transition: box-shadow 0.18s, border 0.15s;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.6em;
+}
+
+.trail-list-item:hover {
+  box-shadow: 0 7px 22px #b6e09d8c;
+  border-color: #b6e09d;
+}
+
+.trail-list-item img {
+  width: 180px;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1.5px solid #b6e09d;
+  box-shadow: 0 2px 10px #b6e09d22;
+  background: #f8fef7;
+  flex-shrink: 0;
+}
+
+.trail-list-title {
+  font-size: 1.23rem;
+  color: #2d5836;
+  font-weight: 700;
+  margin-bottom: 0.37em;
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+}
+
+.trail-list-meta {
+  font-size: 1.01rem;
+  color: #5e6e41;
+  margin-bottom: 0.35em;
+  line-height: 1.6;
+}
+
+.trail-list-desc {
+  font-size: 1.02rem;
+  color: #386937;
+  margin-bottom: 0.23em;
+}
+.trail-list-ideal {
+  font-size: 1.01rem;
+  color: #4b5a30;
+  background: #e1f6e2;
+  border-radius: 7px;
+  padding: 0.2em 0.7em;
+  margin-bottom: 0.3em;
+  display: inline-block;
+}
+
+.trail-list-tips {
+  font-size: 0.99rem;
+  color: #317a2e;
+  background: #f5fff3;
+  padding: 0.18em 0.8em;
+  border-radius: 6px;
+  margin-top: 0.3em;
+  font-style: italic;
+  display: inline-block;
+}
+
+.trail-list-item iframe {
+  border: 0;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px #b6e09d3a;
+  margin-top: 1.1em;
+  min-height: 180px;
+  width: 100%;
+  max-width: 600px;
+}
+
+/* --------- Responsivo para Trilhas --------- */
+@media (max-width: 700px) {
+  .trail-list-item {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1em;
+    padding: 1.1em 0.9em;
+  }
+
+  .trail-list-item img {
+    width: 100%;
+    max-width: 100vw;
+    height: 120px;
+  }
+  .trail-list-item iframe {
+    min-height: 130px;
+    height: 160px;
+  }
+}
+
+/* --------- Biodiversity Section (Parques, Biodiversidade, etc) --------- */
+/* Container principal da biodiversidade */
+.biodiversity-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+  line-height: 1.7;
+}
+
+/* Título principal */
+.main-title {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin-bottom: 2rem;
+  text-align: center;
+  border-bottom: 2px solid #27ae60;
+  padding-bottom: 1rem;
+  white-space: nowrap;
+}
+
+/* Seção de conteúdo flexível */
+.content-section {
+  display: flex;
+  gap: 3rem;
+  margin-top: 1.5rem;
+}
+
+/* Coluna de texto */
+.text-column {
+  flex: 2;
+  text-align: justify;
+}
+
+/* Subtítulos de seções */
+.section-subtitle {
+  color: #27ae60;
+  margin-top: 1.5rem;
+  border-left: 4px solid #27ae60;
+  padding-left: 1rem;
+}
+
+/* Listas de espécies */
+.species-list {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.species-list li {
+  margin-bottom: 0.5rem;
+}
+
+/* Conclusão destacada */
+.conclusion {
+  font-style: italic;
+  background-color: #f8f9fa;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+/* Coluna de imagens */
+.image-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Container da figura/imagem */
+.figure-container {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Imagem principal */
+.figure-image {
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+  transition: transform 0.3s;
+}
+.figure-image:hover {
+  transform: scale(1.02);
+}
+
+/* Legenda da figura/imagem */
+.figure-caption {
+  font-size: 0.9rem;
+  color: #666;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* Responsivo para biodiversidade/parques */
+@media (max-width: 768px) {
+  .content-section {
+    flex-direction: column;
+  }
+  
+  .image-column {
+    margin-top: 2rem;
+    gap: 1.5rem;
+  }
+}
