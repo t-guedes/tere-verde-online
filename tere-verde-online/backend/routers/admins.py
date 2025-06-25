@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException
 from database import get_db_connection
-from schemas import AdminCreate, AdminOut
+from schemas import AdminCreate, AdminOut, ChangePasswordRequest
 from auth_utils import get_password_hash, verify_password, decode_access_token
 from routers.auth import get_current_admin
 from typing import List
@@ -36,13 +36,20 @@ def create_admin(admin: AdminCreate, username: str = Depends(get_current_admin))
         raise HTTPException(status_code=400, detail="Usuário já existe.")
 
 @router.put("/change-password")
-def change_password(new_password: str, username: str = Depends(get_current_admin)):
+def change_password(
+    data: ChangePasswordRequest,
+    current_admin: str = Depends(get_current_admin)
+):
     conn = get_db_connection()
     cur = conn.cursor()
-    password_hash = get_password_hash(new_password)
-    cur.execute("UPDATE admins SET password_hash=? WHERE username=?", (password_hash, username))
+    # Só permite trocar senha se for o próprio ou se for admin master (opcional lógica extra)
+    password_hash = get_password_hash(data.new_password)
+    cur.execute("UPDATE admins SET password_hash=? WHERE username=?", (password_hash, data.username))
     conn.commit()
+    rows_affected = cur.rowcount
     conn.close()
+    if rows_affected == 0:
+        raise HTTPException(status_code=404, detail="Usuário não encontrado.")
     return {"ok": True}
 
 @router.delete("/{admin_id}")

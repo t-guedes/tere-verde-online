@@ -46,7 +46,9 @@ export default function AdminPanel() {
   // Admins
   const [admins, setAdmins] = useState([])
   const [newAdmin, setNewAdmin] = useState({ username: "", password: "" })
+  const [showCreateAdmin, setShowCreateAdmin] = useState(false)
   const [newPassword, setNewPassword] = useState("")
+  const [selectedUser, setSelectedUser] = useState("")
   const [msg, setMsg] = useState("")
 
   // Função para tratar erros protegidos por token
@@ -165,7 +167,7 @@ export default function AdminPanel() {
   const handleCreateAdmin = e => {
     e.preventDefault()
     createAdmin(newAdmin, token)
-      .then(() => { setNewAdmin({ username: "", password: "" }); loadAdmins(); setMsg("Admin criado!") })
+      .then(() => { setNewAdmin({ username: "", password: "" }); setShowCreateAdmin(false); loadAdmins(); setMsg("Admin criado!") })
       .catch(handleProtectedError)
   }
   const handleDeleteAdmin = id => {
@@ -173,8 +175,12 @@ export default function AdminPanel() {
   }
   const handleChangePassword = e => {
     e.preventDefault()
-    changeAdminPassword(newPassword, token)
-      .then(() => { setNewPassword(""); setMsg("Senha alterada!") })
+    if (!selectedUser) {
+      setMsg("Selecione o usuário antes de alterar a senha.")
+      return
+    }
+    changeAdminPassword({ username: selectedUser, new_password: newPassword }, token)
+      .then(() => { setNewPassword(""); setMsg("Senha alterada!"); })
       .catch(handleProtectedError)
   }
 
@@ -302,57 +308,135 @@ export default function AdminPanel() {
 
       {/* Admins */}
       {tab === "admins" && (
-        <div>
-          <h3 className="section-title" style={{ marginTop: "1.5em" }}>Admins</h3>
-          <ul className="admin-list">
-            {admins.map(adm => (
-              <li key={adm.id} className="admin-list-item">
-                {adm.username}
-                <div className="admin-list-actions">
-                  <button className="button-cancel" onClick={() => handleDeleteAdmin(adm.id)}>Excluir</button>
-                </div>
-              </li>
-            ))}
-          </ul>
-          <form className="event-form" style={{ maxWidth: 340, margin: "24px auto 0 auto" }} onSubmit={handleCreateAdmin}>
-            <label className="event-label">
-              Novo usuário
-              <input
-                className="event-input"
-                placeholder="Novo usuário"
-                value={newAdmin.username}
-                onChange={e => setNewAdmin({ ...newAdmin, username: e.target.value })}
-                required
-              />
-            </label>
-            <label className="event-label">
-              Senha
-              <input
-                className="event-input"
-                placeholder="Senha"
-                type="password"
-                value={newAdmin.password}
-                onChange={e => setNewAdmin({ ...newAdmin, password: e.target.value })}
-                required
-              />
-            </label>
-            <button type="submit" className="button-outline" style={{ width: "100%" }}>Criar Admin</button>
-          </form>
-          <h4 className="section-title" style={{ marginTop: "2.5em" }}>Alterar minha senha</h4>
-          <form className="event-form" style={{ maxWidth: 340, margin: "0 auto" }} onSubmit={handleChangePassword}>
-            <label className="event-label">
-              Nova senha
-              <input
-                className="event-input"
-                placeholder="Nova senha"
-                type="password"
-                value={newPassword}
-                onChange={e => setNewPassword(e.target.value)}
-                required
-              />
-            </label>
-            <button type="submit" className="button-outline" style={{ width: "100%" }}>Alterar Senha</button>
-          </form>
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+          {/* <h3 className="main-title" style={{ marginTop: "1.5em", textAlign: "center" }}>Admins</h3> */}
+          <div style={{
+            display: "flex",
+            gap: "40px",
+            flexWrap: "wrap",
+            justifyContent: "center",
+            marginTop: "2em",
+            width: "100%"
+          }}>
+            {/* Card Lista de Admins */}
+            <div style={{
+              minWidth: 260,
+              background: "#fff",
+              borderRadius: 12,
+              boxShadow: "0 2px 8px #0001",
+              padding: "24px 24px 12px 24px"
+            }}>
+              <ul style={{ padding: 0, margin: 0, listStyle: "none" }}>
+                <h4 className="section-title" style={{ margin: "0 0 16px 0", textAlign: "center" }}>Usuários</h4>
+                {admins.map(adm => (
+                  <li key={adm.id} style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    marginBottom: 12,
+                    borderBottom: "1px solid #eee",
+                    paddingBottom: 8
+                  }}>
+                    <span style={{ fontWeight: 500 }}>{adm.username}</span>
+                    <button
+                      className="button-cancel"
+                      style={{
+                        marginLeft: 16,
+                        padding: "4px 12px",
+                        background: "#ffe5e5",
+                        color: "#b22",
+                        borderRadius: 8,
+                        border: "1px solid #fbb",
+                        fontSize: 14
+                      }}
+                      onClick={() => handleDeleteAdmin(adm.id)}
+                    >Excluir</button>
+                  </li>
+                ))}
+              </ul>
+              <button
+                className="button-outline"
+                style={{ marginTop: 18, width: "100%" }}
+                onClick={() => setShowCreateAdmin(!showCreateAdmin)}
+              >
+                {showCreateAdmin ? "Cancelar" : "Novo Usuário"}
+              </button>
+              {showCreateAdmin && (
+                <form
+                  className="event-form"
+                  style={{ marginTop: 12 }}
+                  onSubmit={handleCreateAdmin}
+                >
+                  <label className="event-label" style={{ fontWeight: 500 }}>
+                    Novo usuário
+                    <input
+                      className="event-input"
+                      placeholder="Novo usuário"
+                      value={newAdmin.username}
+                      onChange={e => setNewAdmin({ ...newAdmin, username: e.target.value })}
+                      required
+                      style={{ marginTop: 4, marginBottom: 16, background: "#eef6ff" }}
+                    />
+                  </label>
+                  <label className="event-label" style={{ fontWeight: 500 }}>
+                    Senha
+                    <input
+                      className="event-input"
+                      placeholder="Senha"
+                      type="password"
+                      value={newAdmin.password}
+                      onChange={e => setNewAdmin({ ...newAdmin, password: e.target.value })}
+                      required
+                      style={{ marginTop: 4, marginBottom: 16, background: "#eef6ff" }}
+                    />
+                  </label>
+                  <button type="submit" className="button-outline" style={{ width: "100%" }}>Criar Admin</button>
+                </form>
+              )}
+            </div>
+
+            {/* Card Alterar senha */}
+            <div style={{
+              background: "#fff",
+              borderRadius: 12,
+              boxShadow: "0 2px 8px #0001",
+              maxWidth: 320,
+              padding: 24,
+              marginTop: 0,
+              minWidth: 260
+            }}>
+              <h4 className="section-title" style={{ margin: "0 0 16px 0", textAlign: "center" }}>Alterar senha</h4>
+              <form className="event-form" style={{ margin: "0" }} onSubmit={handleChangePassword}>
+                <label className="event-label" style={{ fontWeight: 500 }}>
+                  Selecione o usuário
+                  <select
+                    style={{ marginTop: 4, marginBottom: 16, width: "100%", padding: 6, borderRadius: 6, background: "#eef6ff" }}
+                    value={selectedUser}
+                    onChange={e => setSelectedUser(e.target.value)}
+                    required
+                  >
+                    <option value="">Selecione...</option>
+                    {admins.map(adm => (
+                      <option key={adm.id} value={adm.username}>{adm.username}</option>
+                    ))}
+                  </select>
+                </label>
+                <label className="event-label" style={{ fontWeight: 500 }}>
+                  Nova senha
+                  <input
+                    className="event-input"
+                    placeholder="Nova senha"
+                    type="password"
+                    value={newPassword}
+                    onChange={e => setNewPassword(e.target.value)}
+                    required
+                    style={{ marginTop: 4, marginBottom: 16, background: "#eef6ff" }}
+                  />
+                </label>
+                <button type="submit" className="button-outline" style={{ width: "100%" }}>Alterar Senha</button>
+              </form>
+            </div>
+          </div>
         </div>
       )}
     </section>

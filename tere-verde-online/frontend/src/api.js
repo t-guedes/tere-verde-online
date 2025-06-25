@@ -58,9 +58,9 @@ export const createAdmin = (admin, token) =>
   API.post("/admins/", admin, { headers: { Authorization: `Bearer ${token}` } })
 export const deleteAdmin = (id, token) =>
   API.delete(`/admins/${id}`, { headers: { Authorization: `Bearer ${token}` } })
-export const changeAdminPassword = (new_password, token) =>
+export const changeAdminPassword = (payload, token) =>
   API.put(
-    `/admins/change-password/?new_password=${encodeURIComponent(new_password)}`,
-    {},
+    "/admins/change-password",
+    payload,
     { headers: { Authorization: `Bearer ${token}` } }
   )

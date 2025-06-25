@@ -22,3 +22,15 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Ambiente virtual do Python
+venv/
+
+# Arquivos compilados Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+#Banco de dados
+*teredeverde.db

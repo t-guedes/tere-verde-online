@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import Optional, List, Any
+from typing import Optional, List
 
 class AdminLogin(BaseModel):
     username: str
@@ -16,6 +16,10 @@ class AdminOut(BaseModel):
 class Token(BaseModel):
     access_token: str
     token_type: str
+
+class ChangePasswordRequest(BaseModel):
+    username: str
+    new_password: str
 
 class EventBase(BaseModel):
     title: str
@@ -61,9 +65,9 @@ class BiodiversityBase(BaseModel):
     species: Optional[str] = ""
     map_url: Optional[str] = ""
     image_url: Optional[str] = ""
-    mamiferos: Optional[List[str]] = [] # list or JSON string
-    anfibios: Optional[List[str]]= [] # list or JSON string
-    aves: Optional[List[str]] = []    # list or JSON string
+    mamiferos: Optional[List[str]] = []
+    anfibios: Optional[List[str]] = []
+    aves: Optional[List[str]] = []
     conclusao: Optional[str] = ""
     parque: Optional[str] = ""
 

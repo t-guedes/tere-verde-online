@@ -19,6 +19,13 @@ def create_tables():
         password_hash TEXT NOT NULL
     );
     """)
+    cursor.execute("PRAGMA table_info(admins);")
+    columns = [row[1] for row in cursor.fetchall()]
+    if "email" not in columns:
+        try:
+            cursor.execute("ALTER TABLE admins ADD COLUMN email TEXT;")
+        except:
+               pass
 
     # Tabela de eventos
     cursor.execute("""
