@@ -113,10 +113,13 @@ export default function Events() {
       const dynamicEvents = res.data.filter(ev => !staticEvents.some(sev => sev.title === ev.title && sev.date === ev.date))
       // Junta tudo filtrado
       const allEvents = [...filteredStatic, ...dynamicEvents]
-      setEvents(allEvents)
-      if (allEvents.length > 0 && (!filter.title && !filter.date)) setBadge(true)
+      // FILTRO PARA REMOVER EVENTOS INDISPONÍVEIS
+      const onlyAvailable = allEvents.filter(ev => ev.available !== false)
+      setEvents(onlyAvailable)
+      if (onlyAvailable.length > 0 && (!filter.title && !filter.date)) setBadge(true)
       else setBadge(false)
     })
+
   }, [filter])
 
   return (
@@ -154,23 +157,23 @@ export default function Events() {
               style={
                 ev.id === "static-1"
                   ? {
-                      background: "linear-gradient(100deg, #e8f5e9 80%, #d8efda 100%)",
-                      border: "2px solid #b6e09d",
-                      boxShadow: "0 4px 18px #d9e6d088",
-                      padding: "2.1em 1.3em 1.5em 1.3em",
-                      position: "relative",
-                      minHeight: 240
-                    }
+                    background: "linear-gradient(100deg, #e8f5e9 80%, #d8efda 100%)",
+                    border: "2px solid #b6e09d",
+                    boxShadow: "0 4px 18px #d9e6d088",
+                    padding: "2.1em 1.3em 1.5em 1.3em",
+                    position: "relative",
+                    minHeight: 240
+                  }
                   : {
-                      borderLeft: "6px solid #b6e09d",
-                      background: "linear-gradient(98deg, #f9f8f3 85%, #f2fbe9 100%)",
-                      boxShadow: "0 2px 7px #eae7d5a6",
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "stretch",
-                      minHeight: 240,
-                      padding: "1.3em"
-                    }
+                    borderLeft: "6px solid #b6e09d",
+                    background: "linear-gradient(98deg, #f9f8f3 85%, #f2fbe9 100%)",
+                    boxShadow: "0 2px 7px #eae7d5a6",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "stretch",
+                    minHeight: 240,
+                    padding: "1.3em"
+                  }
               }
             >
               {ev.id === "static-1" && (
