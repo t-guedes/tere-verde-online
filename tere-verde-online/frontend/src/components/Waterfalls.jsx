@@ -41,8 +41,8 @@ export default function Waterfalls() {
         : true;
       const heightFilter = filters.height
         ? (wf.height || "")
-            .toLowerCase()
-            .includes(filters.height.toLowerCase())
+          .toLowerCase()
+          .includes(filters.height.toLowerCase())
         : true;
       return nameFilter && heightFilter;
     });

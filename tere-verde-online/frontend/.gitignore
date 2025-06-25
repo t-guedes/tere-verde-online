@@ -23,14 +23,14 @@ dist-ssr
 *.sln
 *.sw?
 
-# Ambiente virtual do Python
-venv/
-
 # Arquivos compilados Python
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
+
+# Ambiente virtual do Python
+venv/
 
 #Banco de dados
 *teredeverde.db
