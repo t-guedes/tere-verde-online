@@ -237,7 +237,7 @@ tere-verde-online/
 │   │   ├── main.jsx
 │   │   └── styles.css
 │   ├── package.json
-│   ├── vite.config.js (se houver)
+│   ├── vite.config.js
 │   └── ...
 │
 ├── README.md
