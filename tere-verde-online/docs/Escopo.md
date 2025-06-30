@@ -1,20 +1,5 @@
 ## Escopo
 
-### O que está incluído (O que o MVP faz)
-
-- Portal público com:
-  - Biodiversidade (fauna e flora) por parque.
-  - Lista de trilhas, parques, cachoeiras e eventos.
-  - Filtros dinâmicos integrados.
-  - Detalhes, mapas (Google Maps/embed), imagens e dicas.
-- Área administrativa:
-  - Cadastro, edição e exclusão de todas as entidades.
-  - Gerenciamento de usuários admins (criação, exclusão, troca de senha).
-- Autenticação JWT para admins.
-- Layout responsivo e acessível.
-- Imagens, descrições e links oficiais das atrações.
-- Scripts para inicialização local (dev).
-
 ### O que está fora do escopo (O que o MVP **não** faz)
 
 - Integração com sistemas de pagamento ou reservas.
