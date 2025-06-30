@@ -11,4 +11,4 @@
 - Não realiza reservas ou inscrições em eventos/trilhas, apenas consulta.
 - Não gerencia avaliações ou comentários de visitantes.
 
----
+
