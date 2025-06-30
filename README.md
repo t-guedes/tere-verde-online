@@ -148,6 +148,7 @@ O projeto **Terê Verde Online** surge como resposta a essa necessidade, reunind
 3. Instale as dependências:
    ```bash
    pip install -r requirements.txt
+   pip install fastapi uvicorn
    ```
 
 4. Execute o servidor FastAPI:
