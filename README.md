@@ -13,6 +13,7 @@
 ## Índice
 
 - [Sobre o Projeto](#sobre-o-projeto)
+- [Situação-Problema](#situação-problema)
 - [Funcionalidades](#funcionalidades)
 - [Requisitos do MVP](#requisitos-do-mvp)
   - [Requisitos Funcionais](#requisitos-funcionais)
@@ -187,7 +188,7 @@ tere-verde-online/
 └── __pycache__/
 │   │       ├── auth.cpython-312.pyc
 │   │       ├── database.cpython-312.pyc
-│   │       ├── main.cpython-312.pycc
+│   │       ├── main.cpython-312.pyc
 │   │       └── schemas.cpython-312.pyc
 │   ├── Routes/
 │   │   ├── __init__.py
@@ -211,6 +212,7 @@ tere-verde-online/
 │   ├── main.py
 │   ├── schemas.py
 │   ├── teredeverde.db
+│   ├── requirements.txt
 │   └── venv/                  
 │
 ├── frontend/
@@ -253,8 +255,7 @@ tere-verde-online/
 │   ├── vite.config.js
 │   └── ...
 │
-├── README.md
-└── requisitos.md
+└──  README.md
 
 ```
 
