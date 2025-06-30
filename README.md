@@ -7,7 +7,7 @@
 Este projeto foi desenvolvido individualmente.
 
 - Nome: Tamires Guedes Bernabe 
-- GitHub: https://github.com/t-guedes
+- **GitHub:** [https://github.com/t-guedes](https://github.com/t-guedes)  
 - E-mail: tamiresguedesb@gmail.com
 
 ---
