@@ -35,6 +35,23 @@ O Terê Verde Online integra informações ambientais, dados de trilhas, parques
 
 ---
 
+## Sobre o Projeto
+
+O Terê Verde Online integra informações ambientais, dados de trilhas, parques, cachoeiras e eventos de Teresópolis em uma plataforma única, dinâmica e acessível, tanto para moradores quanto visitantes. O sistema inclui área administrativa para gerenciamento de conteúdos.
+
+## Situação-Problema
+
+A geografia do município de Teresópolis é marcada por terrenos montanhosos entre vales, com a área urbana localizada em um planalto a 869 metros de altitude. O município é delimitado por três importantes unidades de conservação: o **Parque Nacional da Serra dos Órgãos**, o **Parque Estadual dos Três Picos** e o **Parque Natural Municipal Montanhas de Teresópolis**. Essas áreas protegidas impulsionam o turismo ecológico, especialmente o montanhismo, mas também limitam o crescimento urbano.
+
+Apesar de ser um destino turístico conhecido pelas suas trilhas, cachoeiras e biodiversidade, ainda há dificuldades no acesso a informações atualizadas e organizadas sobre essas atrações.  
+
+**O desafio** consiste em desenvolver uma **solução digital eficiente** que permita à população e aos turistas consultarem de forma prática as informações sobre trilhas, parques, eventos e biodiversidade dessas áreas.  
+
+O projeto **Terê Verde Online** surge como resposta a essa necessidade, reunindo os dados em uma plataforma web responsiva, intuitiva e informativa, com recursos voltados tanto para o público geral quanto para administradores responsáveis pelo conteúdo.
+
+...
+
+
 ## Funcionalidades
 
 - **Visualização de Trilhas**: Lista e detalhes de trilhas, com filtros por parque e dificuldade.
