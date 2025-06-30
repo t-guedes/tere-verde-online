@@ -45,8 +45,7 @@ Apesar de ser um destino turístico conhecido pelas suas trilhas, cachoeiras e b
 
 O projeto **Terê Verde Online** surge como resposta a essa necessidade, reunindo os dados em uma plataforma web responsiva, intuitiva e informativa, com recursos voltados tanto para o público geral quanto para administradores responsáveis pelo conteúdo.
 
-...
-
+---
 
 ## Funcionalidades
 
