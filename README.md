@@ -276,7 +276,7 @@ O protótipo foi desenvolvido através do Canvas.
 
 As duas primeiras telas escolhidas para prototipação foram: 
 - Página de Login do administrador (AdminLogin.jsx)
--  ![LoginAdministrador](https://github.com/user-attachments/assets/35732935-39b5-4066-9117-5de3669014a2)
+ ![LoginAdministrador](https://github.com/user-attachments/assets/35732935-39b5-4066-9117-5de3669014a2)
 
 - Página de Cadastrar novo evento (EventForm.jsx)
 ![CadastrarNovoEvento](https://github.com/user-attachments/assets/77b84553-2e49-47d9-9b2f-89b3c358d803)
