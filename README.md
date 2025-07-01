@@ -27,7 +27,7 @@ Este projeto foi desenvolvido individualmente.
   - [Frontend](#frontend)
 - [Estrutura do Projeto](#estrutura-do-projeto)
 - [Tecnologias Utilizadas](#tecnologias-utilizadas)
-- [Prótotipos](#Prototipação)
+- [Protótipos](#Prototipação)
 - [Contribuição](#contribuição)
 - [Licença](#licença)
 
