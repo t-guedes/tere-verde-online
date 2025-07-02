@@ -5,10 +5,6 @@ import trilhaSuspensaImg from '../assets/trilha-suspensa.jpg';
 import cartaoPostalImg from '../assets/cartao-postal.jpeg';
 import pedraDoSinoImg from '../assets/pedra-do-sino.jpg';
 import pedraDaTartarugaImg from '../assets/pedra-da-tartaruga.jpg';
-import pedraDoCameloImg from '../assets/Pedra-do-Camelo.jpeg';
-import valeDoDeusesImg from '../assets/Travessia Vale dos Deuses x Vale dos Frades com indicação de picos.jpg';
-import cabecaDoDragaoImg from '../assets/cabeca-de-dragao.jpg';
-import trilhaDoJequitibaImg from '../assets/trilha-do-jequitiba.jpg';
 
 // Trilhas de destaque fixas
 const featuredTrails = [
@@ -59,54 +55,6 @@ const featuredTrails = [
     ideal_for: "",
     image_url: pedraDaTartarugaImg,
     map_url: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d297146.5212758072!2d-43.11297381015546!3d-22.538541940604652!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x984dae6d1e488f%3A0x235ce210eeb02c18!2sPedra%20da%20Tartaruga%20-%20Parque%20Municipal%20Montanhas%20de%20Teresópolis!5e0!3m2!1spt-BR!2sbr!4v1750199494732!5m2!1spt-BR!2sbr"
-  },
-  {
-    id: 4,
-    name: "Trilha da Pedra do Camelo",
-    park: "Parque Natural Municipal Montanhas de Teresópolis",
-    difficulty: "Moderado a pesado",
-    estimated_time: "2h",
-    description: "Formação rochosa semelhante a um camelo e vista para o Vale da Revolta. Pouco movimentada.",
-    safety_tips: "",
-    ideal_for: "",
-    image_url: pedraDoCameloImg,
-    map_url: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3689.6787729471216!2d-42.99910292470543!3d-22.365754879639564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x984da31572eee9%3A0x924ecf53a6df34f5!2sPedra%20do%20Camelo!5e0!3m2!1spt-BR!2sbr!4v1750200100601!5m2!1spt-BR!2sbr"
-  },
-  {
-    id: 5,
-    name: "Trilha do Vale dos Deuses",
-    park: "Parque Estadual dos Três Picos",
-    difficulty: "Moderado",
-    estimated_time: "1h30 (ida)",
-    description: "Vista para os Três Picos (Cabeça de Dragão, Capacete e Pico Maior). Ideal para contemplação e fotografia.",
-    safety_tips: "",
-    ideal_for: "",
-    image_url: valeDoDeusesImg,
-    map_url: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3690.630841756249!2d-42.74192012470673!3d-22.329796979665335!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x983a8e602c4991%3A0xa3662f7d9a7cfbc4!2sTrilha%20Vale%20dos%20Frades%20x%20Vale%20dos%20Deuses!5e0!3m2!1spt-BR!2sbr!4v1750201543143!5m2!1spt-BR!2sbr"
-  },
-  {
-    id: 6,
-    name: "Trilha da Cabeça do Dragão",
-    park: "Parque Estadual dos Três Picos",
-    difficulty: "Pesado",
-    estimated_time: "4h (ida e volta)",
-    description: "Escalada leve e visual panorâmico da serra. Requer bom preparo físico.",
-    safety_tips: "",
-    ideal_for: "",
-    image_url: cabecaDoDragaoImg,
-    map_url: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d118146.33009199494!2d-42.754917602734416!3d-22.275231400000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x983ac2cabc1671%3A0x11569b26a260d98d!2zQ2FiZcOnYSBkZSBEcmFnw6Nv!5e0!3m2!1spt-BR!2sbr!4v1750201464799!5m2!1spt-BR!2sbr"
-  },
-  {
-    id: 7,
-    name: "Trilha do Jequitibá",
-    park: "Parque Estadual dos Três Picos",
-    difficulty: "Leve",
-    estimated_time: "30 min",
-    description: "Passa por fragmentos de Mata Atlântica preservada, com árvores centenárias. Ideal para iniciantes.",
-    safety_tips: "",
-    ideal_for: "",
-    image_url: trilhaDoJequitibaImg,
-    map_url: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d472102.38508147903!2d-43.219405210937495!3d-22.417735999999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9828e75fa154d5%3A0xa668cc4eb2eee6fc!2sTrilha%20do%20Jequitib%C3%A1%20Rosa!5e0!3m2!1spt-BR!2sbr!4v1750202417728!5m2!1spt-BR!2sbr"
   }
 ];
 

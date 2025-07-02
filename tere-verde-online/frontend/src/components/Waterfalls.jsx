@@ -7,7 +7,7 @@ const featuredWaterfall = {
   id: 0,
   name: "Cachoeira dos Frades",
   location: "Teresópolis",
-  height: "Aprox. 10 metros",
+  height: "10 metros",
   description:
     "A Cachoeira dos Frades, um dos cartões postais de Teresópolis, possui uma linda queda de aproximadamente 10 metros de altura...",
   image_url:
