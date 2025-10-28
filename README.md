@@ -253,9 +253,6 @@ tere-verde-online/
     ├── ⚙️ package.json
     └── 📄 vite.config.js
 ```
----
-
-```
 
 ---
 
