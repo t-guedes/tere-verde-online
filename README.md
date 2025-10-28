@@ -187,78 +187,73 @@ O projeto **Terê Verde Online** surge como resposta a essa necessidade, reunind
 
 ```plaintext
 tere-verde-online/
-├── backend/
-└── __pycache__/
-│   │       ├── auth.cpython-312.pyc
-│   │       ├── database.cpython-312.pyc
-│   │       ├── main.cpython-312.pyc
-│   │       └── schemas.cpython-312.pyc
-│   ├── Routes/
-│   │   ├── __init__.py
-│   │   ├── admins.py
-│   │   ├── auth.py
-│   │   ├── biodiversity.py
-│   │   ├── events.py
-│   │   ├── parks.py
-│   │   ├── trails.py
-│   │   ├── waterfalls.py
-│   │   └── __pycache__/
-│   │       ├── admins.cpython-312.pyc
-│   │       ├── auth.cpython-312.pyc
-│   │       ├── biodiversity.cpython-312.pyc
-│   │       ├── events.cpython-312.pyc
-│   │       ├── parks.cpython-312.pyc
-│   │       ├── trails.cpython-312.pyc
-│   │       └── waterfalls.cpython-312.pyc
-│   ├── auth_utils.py
-│   ├── database.py
-│   ├── main.py
-│   ├── schemas.py
-│   ├── teredeverde.db
-│   ├── requirements.txt
-│   └── venv/                  
-│
-├── frontend/
-│   ├── public/
-│   │   └── index.html
-│   ├── src/
-│   │   ├── assets/
-│   │   │   ├── cabeca-de-dragao.jpg
-│   │   │   ├── cartao-postal.jpeg
-│   │   │   ├── pedra-da-tartaruga.jpg
-│   │   │   ├── Pedra-do-Camelo.jpeg
-│   │   │   ├── pedra-do-sino.jpg
-│   │   │   ├── Travessia Vale dos Deuses x Vale dos Frades com indicação de picos.jpg
-│   │   │   ├── trilha-do-jequitiba.jpg
-│   │   │   └── trilha-suspensa.jpg
-│   │   ├── components/
-│   │   │   ├── AdminLogin.jsx
-│   │   │   ├── AdminPanel.jsx
-│   │   │   ├── Biodiversity.jsx
-│   │   │   ├── BiodiversityForm.jsx
-│   │   │   ├── EventForm.jsx
-│   │   │   ├── Events.jsx
-│   │   │   ├── FilterBar.jsx
-│   │   │   ├── Home.jsx
-│   │   │   ├── MapLink.jsx
-│   │   │   ├── Navbar.jsx
-│   │   │   ├── ParkForm.jsx
-│   │   │   ├── Parks.jsx
-│   │   │   ├── TrailForm.jsx
-│   │   │   ├── Trails.jsx
-│   │   │   ├── WaterfallForm.jsx
-│   │   │   └── Waterfalls.jsx
-│   │   ├── context/
-│   │   │   └── AuthContext.jsx
-│   │   ├── api.js
-│   │   ├── App.jsx
-│   │   ├── main.jsx
-│   │   └── styles.css
-│   ├── package.json
-│   ├── vite.config.js
-│   └── ...
-│
-└──  README.md
+├── 📁 backend
+│   ├── 📁 routers
+│   │   ├── 🐍 __init__.py
+│   │   ├── 🐍 admins.py
+│   │   ├── 🐍 auth.py
+│   │   ├── 🐍 biodiversity.py
+│   │   ├── 🐍 events.py
+│   │   ├── 🐍 parks.py
+│   │   ├── 🐍 trails.py
+│   │   └── 🐍 waterfalls.py
+│   ├── 🐍 auth_utils.py
+│   ├── 🐍 database.py
+│   ├── 🐍 main.py
+│   ├── ⚙️ package-lock.json
+│   ├── ⚙️ package.json
+│   ├── 📄 requirements.txt
+│   ├── 🐍 schemas.py
+│   └── 📄 teredeverde.db
+├── 📁 docs
+│   ├── 📁 Prótotipos
+│   │   ├── 🖼️ CadastrarNovoEvento.png
+│   │   └── 🖼️ LoginAdministrador.png
+│   ├── 📝 Escopo.md
+│   ├── 📕 Requisitos_MVP_TereVerdeOnline.pdf
+│   └── 📄 Terê Verde Online  - Apresentação MVP.pptx
+└── 📁 frontend
+    ├── 📁 public
+    │   └── 🖼️ vite.svg
+    ├── 📁 src
+    │   ├── 📁 assets
+    │   │   ├── 🖼️ cartao-postal.jpeg
+    │   │   ├── 🖼️ pedra-da-tartaruga.jpg
+    │   │   ├── 🖼️ pedra-do-sino.jpg
+    │   │   ├── 🖼️ react.svg
+    │   │   └── 🖼️ trilha-suspensa.jpg
+    │   ├── 📁 components
+    │   │   ├── 📄 AdminLogin.jsx
+    │   │   ├── 📄 AdminPanel.jsx
+    │   │   ├── 📄 Biodiversity.jsx
+    │   │   ├── 📄 BiodiversityForm.jsx
+    │   │   ├── 📄 EventForm.jsx
+    │   │   ├── 📄 Events.jsx
+    │   │   ├── 📄 FilterBar.jsx
+    │   │   ├── 📄 Home.jsx
+    │   │   ├── 📄 MapLink.jsx
+    │   │   ├── 📄 Navbar.jsx
+    │   │   ├── 📄 ParkForm.jsx
+    │   │   ├── 📄 Parks.jsx
+    │   │   ├── 📄 TrailForm.jsx
+    │   │   ├── 📄 Trails.jsx
+    │   │   ├── 📄 WaterfallForm.jsx
+    │   │   └── 📄 Waterfalls.jsx
+    │   ├── 📁 context
+    │   │   └── 📄 AuthContext.jsx
+    │   ├── 📄 App.jsx
+    │   ├── 📄 api.js
+    │   ├── 📄 main.jsx
+    │   └── 🎨 styles.css
+    ├── ⚙️ .gitignore
+    ├── 📝 README.md
+    ├── 📄 eslint.config.js
+    ├── 🌐 index.html
+    ├── ⚙️ package-lock.json
+    ├── ⚙️ package.json
+    └── 📄 vite.config.js
+```
+---
 
 ```
 
