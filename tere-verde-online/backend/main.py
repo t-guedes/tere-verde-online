@@ -13,8 +13,8 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "https://upgraded-succotash-5gq975pwrpxqh7r6-5173.app.github.dev",
-        "https://upgraded-succotash-5gq975pwrpxqh7r6-8000.app.github.dev"
+        "https://super-duper-space-robot-wr74qxjw5x7gh9g4g-5173.app.github.dev",
+        "hhttps://super-duper-space-robot-wr74qxjw5x7gh9g4g-8000.app.github.dev"
     ],
     allow_credentials=True,
     allow_methods=["*"],

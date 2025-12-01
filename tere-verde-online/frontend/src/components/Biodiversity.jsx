@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState, useMemo } from "react";
+import Select from "react-select";
 import { fetchBiodiversity } from "../api";
 
 // Função utilitária para agrupar por campo (ex: parque)
@@ -70,7 +71,7 @@ function BioCard({ bio }) {
         )}
         {bio.conclusao && (
           <div className="conclusion">
-             {bio.conclusao}
+            {bio.conclusao}
           </div>
         )}
       </div>
@@ -93,7 +94,7 @@ function BioCard({ bio }) {
 }
 
 const PARK_FILTER_OPTIONS = [
-  { value: "", label: "Todos os parques" },
+  { value: "", label: "BIODIVERSIDADE" },
   { value: "PARNASO", label: "PARNASO" },
   { value: "PNMMT", label: "PNMMT" },
   { value: "PETP", label: "PETP" },
@@ -167,41 +168,55 @@ export default function Biodiversity() {
     <div className="biodiversity-container">
       <div ref={topRef} />
 
-      <div style={{ margin: "18px 0 30px 0" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-          <select
-            value={filterSelect}
-            onChange={handleSelect}
-            style={{
-              fontSize: "1em",
-              padding: "6px 18px",
-              borderRadius: 7,
-              border: "1px solid #c1d0c7",
-              color: "#33685d",
-              background: "#fafcfb",
-              fontWeight: 500,
-              boxShadow: "0 1.5px 8px #e7f3ee44",
-              outline: "none",
-              transition: "border 0.18s, box-shadow 0.18s",
-              minWidth: 180,
+      <div style={{ margin: "18px 0 30px 0", maxWidth: 480 }}>
+        <div style={{ display: "flex", gap: 10, flexWrap: "wrap", alignItems: "center" }}>
+          <Select
+            value={PARK_FILTER_OPTIONS.find(opt => opt.value === filterSelect)}
+            onChange={(option) => setFilterSelect(option.value)}
+            options={PARK_FILTER_OPTIONS}
+            placeholder="Selecione um parque"
+            styles={{
+              control: (base, state) => ({
+                ...base,
+                borderRadius: 7,
+                minHeight: 36,
+                fontSize: 16,
+                border: "1px solid #b6e09d",
+                backgroundColor: "#fafcfb",
+                boxShadow: state.isFocused ? "0 0 0 1px #c8e6c9" : "none",
+                "&:hover": { borderColor: "#a3d18f" },
+                outline: "none",
+              }),
+              menu: (base) => ({ ...base, borderRadius: 7 }),
+              option: (base, state) => ({
+                ...base,
+                background: state.isFocused ? "#e3f3df" : "#fff",
+                color: "#27311d",
+              }),
+              singleValue: (base) => ({ ...base, color: "#27311d" }),
+              placeholder: (base) => ({ ...base, color: "#5e6e41" }),
             }}
-          >
-            {PARK_FILTER_OPTIONS.map(opt => (
-              <option key={opt.value} value={opt.value}>{opt.label}</option>
-            ))}
-          </select>
+            className="select-parque"
+          />
+
           {filterSelect === "outros" && (
             <input
               type="text"
               value={customFilter}
-              onChange={handleCustomFilterChange}
+              onChange={(e) => setCustomFilter(e.target.value)}
               placeholder="Digite o nome do parque"
               style={{
                 fontSize: 16,
                 borderRadius: 7,
-                border: "1px solid #b1d2ad",
+                border: "1px solid #c1d0c7",
                 padding: "6px 10px",
-                width: 260
+                width: "auto",
+                minWidth: 200,
+                flex: 1,
+                boxSizing: "border-box",
+                background: "#fafcfb",
+                color: "#27311d",
+                outline: "none",
               }}
             />
           )}
@@ -250,22 +265,22 @@ export default function Biodiversity() {
           <div className="image-column">
             <div className="figure-container">
               <img src="https://viagemeturismo.abril.com.br/wp-content/uploads/2024/07/dedo-de-deus-teresopolis-mirante-do-soberbo.jpg?quality=70&strip=info&w=1280&h=720&crop=1"
-                   alt="Dedo de Deus" className="figure-image" />
+                alt="Dedo de Deus" className="figure-image" />
               <p className="figure-caption">Dedo de Deus, símbolo do parque</p>
             </div>
             <div className="figure-container">
               <img src="https://live.staticflickr.com/3877/14360296142_7b2d7772b0_b.jpg"
-                   alt="Macaco-prego no PARNASO" className="figure-image" />
+                alt="Macaco-prego no PARNASO" className="figure-image" />
               <p className="figure-caption">Macaco-prego, fauna típica</p>
             </div>
             <div className="figure-container">
               <img src="https://cdn.download.ams.birds.cornell.edu/api/v1/asset/243986271/480"
-                   alt="Gavião-pato no PARNASO" className="figure-image" />
+                alt="Gavião-pato no PARNASO" className="figure-image" />
               <p className="figure-caption">Gavião-pato, ave emblemática</p>
             </div>
           </div>
         </div>
-        <div style={{margin: "36px 0 16px 0", textAlign: "center"}}>
+        <div style={{ margin: "36px 0 16px 0", textAlign: "center" }}>
           <button
             onClick={handleBackToTop}
             style={{
@@ -323,22 +338,22 @@ export default function Biodiversity() {
           <div className="image-column">
             <div className="figure-container">
               <img src="https://www.teresopolis.rj.gov.br/wp-content/uploads/2024/05/IMG_5432-2048x1365.jpg"
-                   alt="Vista da Mata Atlântica no PNMMT" className="figure-image" />
+                alt="Vista da Mata Atlântica no PNMMT" className="figure-image" />
               <p className="figure-caption">Panorama da floresta</p>
             </div>
             <div className="figure-container">
               <img src="https://www.teresopolis.rj.gov.br/wp-content/uploads/2024/05/WhatsApp-Image-2023-06-29-at-10.03.50.jpeg"
-                   alt="Fauna do PNMMT" className="figure-image" />
+                alt="Fauna do PNMMT" className="figure-image" />
               <p className="figure-caption">Espécies de mamíferos</p>
             </div>
             <div className="figure-container">
               <img src="https://www.teresopolis.rj.gov.br/wp-content/uploads/2024/05/montanhas-Aracari-Banana-Pteroglossus-bailloni-2048x1365.jpg"
-                   alt="Aves do PNMMT" className="figure-image" />
+                alt="Aves do PNMMT" className="figure-image" />
               <p className="figure-caption">Avifauna diversificada</p>
             </div>
           </div>
         </div>
-        <div style={{margin: "36px 0 16px 0", textAlign: "center"}}>
+        <div style={{ margin: "36px 0 16px 0", textAlign: "center" }}>
           <button
             onClick={handleBackToTop}
             style={{
@@ -405,22 +420,22 @@ export default function Biodiversity() {
           <div className="image-column">
             <div className="figure-container">
               <img src="https://123ecos.com.br/wp-content/uploads/2024/12/do-Parque-Estadual-dos-Tres-Picos-1-1.jpg"
-                   alt="Três Picos" className="figure-image" />
+                alt="Três Picos" className="figure-image" />
               <p className="figure-caption">Parque Estadual dos Três Picos</p>
             </div>
             <div className="figure-container">
               <img src="https://curiosidadeanimalbrasil.wordpress.com/wp-content/uploads/2016/03/muriqui-do-sul_robson-hack.jpg"
-                   alt="Muriqui no PETP" className="figure-image" />
+                alt="Muriqui no PETP" className="figure-image" />
               <p className="figure-caption">Muriqui, maior primata das Américas</p>
             </div>
             <div className="figure-container">
               <img src="https://amoaves.com.br/wp-content/uploads/2021/04/26082020-TANGARA-1SOI-07-26AG2020.jpg"
-                   alt="Tangará no PETP" className="figure-image" />
+                alt="Tangará no PETP" className="figure-image" />
               <p className="figure-caption">Tangará, ave símbolo da Mata Atlântica</p>
             </div>
           </div>
         </div>
-        <div style={{margin: "36px 0 16px 0", textAlign: "center"}}>
+        {/* <div style={{margin: "36px 0 16px 0", textAlign: "center"}}>
           <button
             onClick={handleBackToTop}
             style={{
@@ -437,7 +452,7 @@ export default function Biodiversity() {
           >
             ↑ Escolher outro parque
           </button>
-        </div>
+        </div> */}
       </div>
 
       {/* LISTA DOS DADOS DO BACKEND*/}
@@ -462,7 +477,7 @@ export default function Biodiversity() {
             </div>
           );
         })}
-        <div style={{margin: "36px 0 16px 0", textAlign: "center"}}>
+        <div style={{ margin: "36px 0 16px 0", textAlign: "center" }}>
           <button
             onClick={handleBackToTop}
             style={{

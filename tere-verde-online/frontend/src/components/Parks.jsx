@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useMemo } from "react";
+import Select from 'react-select';
 import { fetchParks } from "../api";
 import MapLink from "./MapLink";
 
@@ -48,11 +49,35 @@ const featuredParks = [
 ];
 
 const PARK_FILTER_OPTIONS = [
+  { value: "", label: "Todos" },
   { value: "Parque Nacional da Serra dos Órgãos", label: "Parque Nacional da Serra dos Órgãos" },
   { value: "Parque Estadual dos Três Picos", label: "Parque Estadual dos Três Picos" },
   { value: "Parque Natural Municipal Montanhas de Teresópolis", label: "Parque Natural Municipal Montanhas de Teresópolis" },
   { value: "outros", label: "Outros (escrever nome)" }
 ];
+
+const selectStyles = {
+  control: (base, state) => ({
+    ...base,
+    borderRadius: 7,
+    minHeight: 36,
+    fontSize: 16,
+    border: "1px solid #b6e09d", // borda verde
+    backgroundColor: "#fafcfb",
+    boxShadow: state.isFocused ? "0 0 0 1px #c8e6c9" : "none", // sombra leve verde
+    "&:hover": { borderColor: "#a3d18f" }, // verde escuro ao passar o mouse
+    outline: "none", // remove o azul do foco do navegador
+  }),
+  menu: (base) => ({ ...base, borderRadius: 7 }),
+  option: (base, state) => ({
+    ...base,
+    background: state.isFocused ? "#e3f3df" : "#fff",
+    color: "#27311d",
+  }),
+  singleValue: (base) => ({ ...base, color: "#27311d" }),
+  placeholder: (base) => ({ ...base, color: "#5e6e41" }),
+};
+
 
 export default function Parks() {
   const [adminParks, setAdminParks] = useState([]);
@@ -63,23 +88,12 @@ export default function Parks() {
     fetchParks({}).then(res => setAdminParks(res.data || []));
   }, []);
 
-  const allParks = useMemo(() => [
-    ...featuredParks,
-    ...adminParks
-  ], [adminParks]);
+  const allParks = useMemo(() => [...featuredParks, ...adminParks], [adminParks]);
 
-  // Filtro atualizado sem FilterBar
   const filteredParks = useMemo(() => {
-    let name = "";
-    if (filterSelect === "outros") {
-      name = customFilter;
-    } else if (filterSelect) {
-      name = filterSelect;
-    }
+    let name = filterSelect === "outros" ? customFilter : filterSelect;
     if (!name) return allParks;
-    return allParks.filter(pk =>
-      pk.name.toLowerCase().includes(name.toLowerCase())
-    );
+    return allParks.filter(pk => pk.name.toLowerCase().includes(name.toLowerCase()));
   }, [allParks, filterSelect, customFilter]);
 
   return (
@@ -112,7 +126,6 @@ export default function Parks() {
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          /* ocupa toda altura do bloco */
           height: 100%;
           margin-top: 150px;
         }
@@ -144,30 +157,43 @@ export default function Parks() {
           }
         }
       `}</style>
+
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "2rem 1rem" }}>
-      
-        {/* Filtro */}
-        <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
-          <select
-            value={filterSelect}
-            onChange={e => {
-              setFilterSelect(e.target.value);
+
+        {/* Filtro react-select */}
+        <div style={{
+          display: "flex",
+          flexWrap: "nowrap",
+          alignItems: "center",
+          gap: 10,
+          marginBottom: 20,
+          width: "100%",
+        }}>
+          <Select
+            options={PARK_FILTER_OPTIONS}
+            value={PARK_FILTER_OPTIONS.find(opt => opt.value === filterSelect)}
+            onChange={opt => {
+              setFilterSelect(opt.value);
               setCustomFilter("");
             }}
-            style={{ fontSize: 16, padding: "6px 10px", borderRadius: 7, border: "1px solid #b1d2ad" }}
-          >
-            <option value="">Todos</option>
-            {PARK_FILTER_OPTIONS.map(opt => (
-              <option key={opt.value} value={opt.value}>{opt.label}</option>
-            ))}
-          </select>
+            styles={selectStyles}
+            placeholder="Todos"
+            isSearchable={false}
+          />
           {filterSelect === "outros" && (
             <input
               type="text"
               value={customFilter}
               onChange={e => setCustomFilter(e.target.value)}
               placeholder="Digite o nome do parque"
-              style={{ fontSize: 16, borderRadius: 7, border: "1px solid #b1d2ad", padding: "6px 10px", width: 260 }}
+              style={{
+                fontSize: 16,
+                borderRadius: 7,
+                border: "1px solid #b1d2ad",
+                padding: "6px 10px",
+                flex: "1 1 150px",
+                minWidth: 120,
+              }}
             />
           )}
         </div>
@@ -181,21 +207,9 @@ export default function Parks() {
                 <div className="park-text-content">
                   <h1 className="main-title">{pk.name}</h1>
                   <div>
-                    {pk.created && (
-                      <>
-                        <b>Criado em:</b> {pk.created}<br />
-                      </>
-                    )}
-                    {pk.area && (
-                      <>
-                        <b>Área:</b> {pk.area}<br />
-                      </>
-                    )}
-                    {pk.highlights && (
-                      <>
-                        <b>Destaque:</b> {pk.highlights}<br />
-                      </>
-                    )}
+                    {pk.created && (<><b>Criado em:</b> {pk.created}<br /></>)}
+                    {pk.area && (<><b>Área:</b> {pk.area}<br /></>)}
+                    {pk.highlights && (<><b>Destaque:</b> {pk.highlights}<br /></>)}
                   </div>
                   {pk.description && (
                     <div style={{ margin: "12px 0" }}>
@@ -209,6 +223,7 @@ export default function Parks() {
                     </div>
                   )}
                 </div>
+
                 <div className="figure-container">
                   {pk.image_url && (
                     <img

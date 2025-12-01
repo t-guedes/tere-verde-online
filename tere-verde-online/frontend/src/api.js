@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const API = axios.create({
-  baseURL: "https://upgraded-succotash-5gq975pwrpxqh7r6-8000.app.github.dev",
+  baseURL: "https://super-duper-space-robot-wr74qxjw5x7gh9g4g-8000.app.github.dev",
 })
 
 // Events

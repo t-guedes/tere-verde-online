@@ -1,6 +1,10 @@
 # Terê Verde Online
 
-**Terê Verde Online** é um portal web dedicado à divulgação da biodiversidade, trilhas, parques, cachoeiras e eventos do município de Teresópolis-RJ. O projeto tem como objetivo promover o turismo sustentável, o conhecimento ambiental e facilitar o acesso a informações sobre as principais atrações naturais da região.
+**Terê Verde Online** é um portal web dedicado à divulgação da biodiversidade, trilhas, parques, cachoeiras e eventos do município de Teresópolis-RJ. O projeto tem como objetivo promover o turismo sustentável, ampliar o conhecimento ambiental e facilitar o acesso a informações sobre as principais atrações naturais da região.
+
+A versão web foi desenvolvida inicialmente e, em seguida, o projeto foi aprimorado para se tornar totalmente responsivo, garantindo excelente experiência de uso em computadores, tablets e dispositivos móveis.
+
+Agora o Terê Verde Online também conta com versão mobile, oferecendo navegação otimizada para celular e permitindo que visitantes e moradores acessem trilhas, mapas, pontos turísticos e eventos diretamente pelo smartphone.
 
 ## Dados do integrante da equipe
 

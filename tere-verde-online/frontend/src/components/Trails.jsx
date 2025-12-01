@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import FilterBar from "./FilterBar";
+import React, { useEffect, useState, useMemo } from "react";
+import Select from "react-select";
 import MapLink from "./MapLink";
 import trilhaSuspensaImg from '../assets/trilha-suspensa.jpg';
 import cartaoPostalImg from '../assets/cartao-postal.jpeg';
@@ -58,9 +58,50 @@ const featuredTrails = [
   }
 ];
 
+// Opções de filtro para React-Select
+const PARK_OPTIONS = [
+  { value: "", label: "Parque" },
+  { value: "Parque Nacional da Serra dos Órgãos", label: "Parque Nacional da Serra dos Órgãos" },
+  { value: "Parque Estadual dos Três Picos", label: "Parque Estadual dos Três Picos" },
+  { value: "Parque Natural Municipal Montanhas de Teresópolis (PNMMT)", label: "Parque Natural Municipal Montanhas de Teresópolis (PNMMT)" }
+];
+
+const DIFFICULTY_OPTIONS = [
+  { value: "", label: "Dificuldade" },
+  { value: "Leve", label: "Leve" },
+  { value: "Moderado", label: "Moderado" },
+  { value: "Pesado", label: "Pesado" },
+  { value: "Moderado a pesado", label: "Moderado a pesado" }
+];
+
+const selectStyles = {
+  control: (base, state) => ({
+    ...base,
+    borderRadius: 7,
+    minHeight: 36,
+    fontSize: 16,
+    border: "1px solid #b6e09d", // borda verde
+    backgroundColor: "#fafcfb",
+    boxShadow: state.isFocused ? "0 0 0 1px #c8e6c9" : "none", // sombra leve verde
+    "&:hover": { borderColor: "#a3d18f" }, // verde escuro ao passar o mouse
+    outline: "none", // remove o azul do foco do navegador
+  }),
+  menu: (base) => ({ ...base, borderRadius: 7 }),
+  option: (base, state) => ({
+    ...base,
+    background: state.isFocused ? "#e3f3df" : "#fff",
+    color: "#27311d",
+  }),
+  singleValue: (base) => ({ ...base, color: "#27311d" }),
+  placeholder: (base) => ({ ...base, color: "#5e6e41" }),
+};
+
+
 export default function Trails() {
   const [dbTrails, setDbTrails] = useState([]);
-  const [filters, setFilters] = useState({});
+  const [nameFilter, setNameFilter] = useState("");
+  const [parkFilter, setParkFilter] = useState("");
+  const [difficultyFilter, setDifficultyFilter] = useState("");
 
   useEffect(() => {
     import("../api")
@@ -68,62 +109,58 @@ export default function Trails() {
       .then(res => setDbTrails(res.data || []));
   }, []);
 
-  const allTrails = [...featuredTrails, ...dbTrails];
+  const allTrails = useMemo(() => [...featuredTrails, ...dbTrails], [dbTrails]);
 
-  const filteredTrails = allTrails.filter(tr => {
-    const nameFilter = filters.name
-      ? tr.name.toLowerCase().includes(filters.name.toLowerCase())
-      : true;
-    const diffFilter = filters.difficulty
-      ? tr.difficulty === filters.difficulty
-      : true;
-    const parkFilter = filters.park
-      ? tr.park === filters.park
-      : true;
-    return nameFilter && diffFilter && parkFilter;
-  });
+  const filteredTrails = useMemo(() => {
+    return allTrails.filter(tr => {
+      return (
+        (!nameFilter || tr.name.toLowerCase().includes(nameFilter.toLowerCase())) &&
+        (!parkFilter || tr.park === parkFilter) &&
+        (!difficultyFilter || tr.difficulty === difficultyFilter)
+      );
+    });
+  }, [allTrails, nameFilter, parkFilter, difficultyFilter]);
 
   return (
     <div style={{ maxWidth: 1200, margin: "0 auto", padding: "2rem 1rem" }}>
       <h1 className="main-title">Trilhas</h1>
-      <FilterBar
-        onFilter={setFilters}
-        fields={[
-          { name: "name", label: "Nome" },
-          {
-            name: "park",
-            label: "Parque",
-            type: "select",
-            options: [
-              { value: "", label: "Parque" },
-              { value: "Parque Nacional da Serra dos Órgãos", label: "Parque Nacional da Serra dos Órgãos" },
-              { value: "Parque Estadual dos Três Picos", label: "Parque Estadual dos Três Picos" },
-              { value: "Parque Natural Municipal Montanhas de Teresópolis (PNMMT)", label: "Parque Natural Municipal Montanhas de Teresópolis (PNMMT)" }
-            ]
-          },
-          {
-            name: "difficulty",
-            label: "Dificuldade",
-            type: "select",
-            options: [
-              { value: "", label: "Dificuldade" },
-              { value: "Leve", label: "Leve" },
-              { value: "Pesado", label: "Pesado" },
-              { value: "Moderado", label: "Moderado" },
-              { value: "Moderado a pesado", label: "Moderado a pesado" }
-            ]
-          }
-        ]}
-      />
+
+      {/* Filtros React-Select e input */}
+      <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginBottom: 20 }}>
+        <input
+          type="text"
+          placeholder="Nome da trilha"
+          value={nameFilter}
+          onChange={e => setNameFilter(e.target.value)}
+          style={{ flex: "1 1 150px", minWidth: 120, padding: "6px 10px", fontSize: 16, borderRadius: 7, border: "1px solid #b1d2ad" }}
+        />
+        <div style={{ flex: "1 1 200px", minWidth: 120 }}>
+          <Select
+            options={PARK_OPTIONS}
+            value={PARK_OPTIONS.find(opt => opt.value === parkFilter)}
+            onChange={opt => setParkFilter(opt.value)}
+            styles={selectStyles}
+            placeholder="Parque"
+            isSearchable={false}
+          />
+        </div>
+        <div style={{ flex: "1 1 150px", minWidth: 120 }}>
+          <Select
+            options={DIFFICULTY_OPTIONS}
+            value={DIFFICULTY_OPTIONS.find(opt => opt.value === difficultyFilter)}
+            onChange={opt => setDifficultyFilter(opt.value)}
+            styles={selectStyles}
+            placeholder="Dificuldade"
+            isSearchable={false}
+          />
+        </div>
+      </div>
+
+      {/* Lista de Trilhas */}
       {filteredTrails.length === 0 ? (
         <p className="no-events">Nenhuma trilha encontrada.</p>
       ) : (
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))",
-          gap: "2.2em",
-          marginTop: "2em"
-        }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))", gap: "2.2em" }}>
           {filteredTrails.map(tr => {
             const isEmbed = tr.map_url && tr.map_url.startsWith("https://www.google.com/maps/embed");
             const key = `${tr.id}-${tr.name}-${tr.park}`;
@@ -135,7 +172,7 @@ export default function Trails() {
                   display: "flex",
                   flexDirection: "column",
                   alignItems: "stretch",
-                  background:"rgba(255, 255, 255, 0.68)" ,
+                  background: "rgba(255, 255, 255, 0.68)",
                   border: "1.7px solid #c8e6c9",
                   borderRadius: 13,
                   boxShadow: "0 4px 18px #d9e6d0b6",
@@ -143,7 +180,7 @@ export default function Trails() {
                   minHeight: 420
                 }}
               >
-                {tr.image_url && tr.image_url !== '' ? (
+                {tr.image_url ? (
                   <img
                     src={tr.image_url}
                     alt={tr.name}
@@ -159,23 +196,19 @@ export default function Trails() {
                     }}
                   />
                 ) : (
-                  <div
-                    style={{
-                      width: "100%",
-                      height: 180,
-                      borderRadius: 10,
-                      background: "#f3f3f3",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      color: "#bbb",
-                      border: "1px solid #eee",
-                      fontStyle: "italic",
-                      marginBottom: "1em"
-                    }}
-                  >
-                    Sem imagem
-                  </div>
+                  <div style={{
+                    width: "100%",
+                    height: 180,
+                    borderRadius: 10,
+                    background: "#f3f3f3",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    color: "#bbb",
+                    border: "1px solid #eee",
+                    fontStyle: "italic",
+                    marginBottom: "1em"
+                  }}>Sem imagem</div>
                 )}
                 <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
                   <div className="trail-list-title" style={{ marginBottom: 8 }}>
@@ -190,34 +223,27 @@ export default function Trails() {
                   <div className="trail-list-desc" style={{ marginBottom: 8 }}>
                     <strong>Características:</strong> {tr.description}
                   </div>
-                  {tr.ideal_for && tr.ideal_for.trim() !== "" && (
+                  {tr.ideal_for && (
                     <div className="trail-list-ideal" style={{ marginBottom: 8 }}>
                       <strong>Ideal para:</strong> {tr.ideal_for}
                     </div>
                   )}
-                  {tr.safety_tips && tr.safety_tips.trim() !== "" && (
+                  {tr.safety_tips && (
                     <div className="trail-list-tips" style={{ marginBottom: 8 }}>
                       <i>Dicas: {tr.safety_tips}</i>
                     </div>
                   )}
                   {isEmbed && (
-                    <div style={{ marginTop: "auto" }}>
-                      <iframe
-                        src={tr.map_url}
-                        width="100%"
-                        height="155"
-                        style={{
-                          border: 0,
-                          borderRadius: "12px",
-                          boxShadow: "0 2px 8px #b6e09d3a",
-                          marginTop: "1em"
-                        }}
-                        allowFullScreen=""
-                        loading="lazy"
-                        referrerPolicy="no-referrer-when-downgrade"
-                        title={`Mapa da trilha ${tr.name}`}
-                      />
-                    </div>
+                    <iframe
+                      src={tr.map_url}
+                      width="100%"
+                      height="155"
+                      style={{ border: 0, borderRadius: "12px", boxShadow: "0 2px 8px #b6e09d3a", marginTop: "1em" }}
+                      allowFullScreen=""
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      title={`Mapa da trilha ${tr.name}`}
+                    />
                   )}
                 </div>
               </div>
