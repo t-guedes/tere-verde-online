@@ -215,6 +215,7 @@ tere-verde-online/
 │   │   └── 🖼️ LoginAdministrador.png
 │   ├── 📝 Escopo.md
 │   ├── 📕 Requisitos_MVP_TereVerdeOnline.pdf
+|   ├── 📄 MVP MOBILE DEVELOPMENT.pptx
 │   └── 📄 Terê Verde Online  - Apresentação MVP.pptx
 └── 📁 frontend
     ├── 📁 public
