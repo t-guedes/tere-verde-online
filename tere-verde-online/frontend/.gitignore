@@ -35,7 +35,7 @@ venv/
 .env.*
 
 # BANCO DE DADOS (SQLite)
-*.db
+*.teredeverde.db
 *.sqlite
 *.sqlite3
 
