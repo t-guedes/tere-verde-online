@@ -1,6 +1,4 @@
-# ============================
 # LOGS
-# ============================
 logs/
 *.log
 npm-debug.log*
@@ -9,17 +7,13 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-# ============================
 # NODE / FRONTEND (React + Vite)
-# ============================
 node_modules/
 dist/
 dist-ssr/
 *.local
 
-# ============================
 # EDITORES (VSCode, JetBrains)
-# ============================
 .vscode/
 !.vscode/extensions.json
 .idea/
@@ -30,9 +24,7 @@ dist-ssr/
 *.sln
 *.sw?
 
-# ============================
 # PYTHON / FASTAPI
-# ============================
 __pycache__/
 *.pyc
 *.pyo
@@ -42,24 +34,19 @@ venv/
 .env
 .env.*
 
-# ============================
 # BANCO DE DADOS (SQLite)
-# ============================
 *.db
 *.sqlite
 *.sqlite3
 
-# ============================
 # BUILD / ARTIFACTS
-# ============================
 *.egg-info/
 *.egg
 build/
 pip-wheel-metadata/
 
-# ============================
 # SISTEMAS OPERACIONAIS
-# ============================
 Thumbs.db
 ehthumbs.db
 Icon?
+Desktop.ini
