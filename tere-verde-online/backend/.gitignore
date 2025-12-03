@@ -25,17 +25,24 @@ dist-ssr/
 *.sw?
 
 # PYTHON / FASTAPI
+__pycache__
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
 
-venv/
+venv
+venv/bin/
+venv/include/
+venv/lib64/
+venv/lib/
+venv/lib/python3.12/
+venv/lib/python3.12/site-packages/
 .env
 .env.*
 
 # BANCO DE DADOS (SQLite)
-*.teredeverde.db
+teredeverde.db
 *.sqlite
 *.sqlite3
 
