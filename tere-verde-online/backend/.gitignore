@@ -31,13 +31,13 @@ __pycache__/
 *.pyo
 *.pyd
 
-.venv
+venv
 venv/bin/
 venv/include/
 venv/lib64/
 venv/lib/
 venv/lib/python3.12/
-.venv/lib/python3.12/site-packages/
+venv/lib/python3.12/site-packages/
 .env
 .env.*
 
