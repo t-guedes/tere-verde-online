@@ -7,12 +7,6 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-# NODE / FRONTEND (React + Vite)
-node_modules/
-dist/
-dist-ssr/
-*.local
-
 # EDITORES (VSCode, JetBrains)
 .vscode/
 !.vscode/extensions.json
